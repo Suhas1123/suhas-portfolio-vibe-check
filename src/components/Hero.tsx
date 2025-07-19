@@ -1,8 +1,17 @@
 import { Mail, Phone, MapPin, Github, Linkedin, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import profilePhoto from "@/assets/profile-photo-new.jpg";
 
 const Hero = () => {
+  const handleDownloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/resume-morla-suhas.pdf';
+    link.download = 'Morla_Suhas_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="hero-gradient py-20 px-4">
       <div className="container mx-auto max-w-6xl">
@@ -74,7 +83,7 @@ const Hero = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="btn-primary">
+              <Button className="btn-primary" onClick={handleDownloadResume}>
                 <Download className="w-4 h-4 mr-2" />
                 Download Resume
               </Button>
